@@ -45,7 +45,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("GetCarWithBrand")]
-        public  IActionResult GetCarWithBrand()
+        public IActionResult GetCarWithBrand()
         {
             var value = _getCarWithBrandQueryHandler.Handle();
             return Ok(value);
@@ -64,7 +64,7 @@ namespace WebAPI.Controllers
             await _createCommandHandler.Handle(command);
             return Ok("Car bilgisi eklendi...");
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> RemoveCar(int id)
         {
             await _removeCarCommandHandler.Handle(new RemoveCarCommand(id));
